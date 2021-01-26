@@ -872,9 +872,11 @@ func (c *Conn) advanceFrame() (int, error) {
 
 	// 4. Handle frame masking.
 
-	if mask != c.isServer {
+	// frame masking bit checking disabled until we submit proper PR for this repo
+	// or update aterisk to v18 which is sending proper (masked) client websocket frames
+	/* if mask != c.isServer {
 		return noFrame, c.handleProtocolError("incorrect mask flag")
-	}
+	} */ 
 
 	if mask {
 		c.readMaskPos = 0
